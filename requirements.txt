@@ -5,13 +5,11 @@ sqlparse==0.5.3
 tzdata==2025.1
 djangorestframework==3.15.2
 djangorestframework_simplejwt==5.4.0 #  JWT 인증 패키지
-django-cors-headers==4.3.1 # frontend와 연결시 필요
 
 # 환경 변수 관리 (추가됨) .env 파일에서 환경 변수를 로드
 python-dotenv==1.0.1  
 
 # 캐싱 및 요청 관련
-redis==5.2.1
 requests==2.32.3
 urllib3==2.3.0
 
@@ -40,3 +38,6 @@ ruff==0.2.1        #  빠른 코드 린터 및 포매터 (PEP8 검사)
 
 # 개발 도구
 ipython==8.32.0
+
+# Django에서 CORS 요청을 관리하는 패키지 React/Vue 등 프론트엔드가 Django API를 호출할 때 필요한 설정
+django-cors-headers==4.3.1

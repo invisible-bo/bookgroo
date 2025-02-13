@@ -1,9 +1,10 @@
 # Python 관련
-__pycache__/
+**/__pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.env
+*.env.*
 .venv/
 venv/
 .env
@@ -14,10 +15,7 @@ pip-delete-this-directory.txt
 # Django 관련 (마이그레이션 캐시)
 *.log
 *.pot
-**/migrations/*.pyc
-**/migrations/*.pyo
-**/migrations/__pycache__/
-**/migrations/[!__init__].py  # '__init__.py' 제외한 마이그레이션 파일
+**/migrations/*  # 모든 마이그레이션 파일 제외, '__init__.py' 포함
 
 # 환경 설정 (IDE, 에디터 관련)
 .vscode/
@@ -25,27 +23,17 @@ pip-delete-this-directory.txt
 *.sublime-workspace
 *.sublime-project
 
-# Docker 관련 파일 (혹시나 해서 올려둠 challenge DB 변경 시)
-docker-compose.override.yml
-docker-compose.dev.yml
-docker-compose.prod.yml
-
-.env
-.env.local
-.env.prod
-env/
-secrets/
-config/
-instance/
-
 # Virtualenv & Poetry 관련
 Pipfile
 Pipfile.lock
 poetry.lock
 
-# SQLite 데이터베이스 파일
+# SQLite 데이터베이스 파일 및 백업 파일
 db.sqlite3
 db.sqlite3-journal
+*.sqlite3-*
+*.sqlite3-shm
+*.sqlite3-wal
 
 # 패키지 관련
 node_modules/
@@ -53,17 +41,10 @@ node_modules/
 # 시스템 파일 (Mac & Windows)
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
 
-# Django Static & Media Files
-staticfiles/
-media/
-
-# 로그 파일 & Celery 관련
+# 로그 파일 관련
 logs/
-celerybeat-schedule
-celerybeat.pid
-celerybeat.db
 
-# Redis 데이터 (필요하면 추가)
-redis_data/
-*.rdb
+
