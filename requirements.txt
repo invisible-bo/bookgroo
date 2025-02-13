@@ -1,0 +1,42 @@
+# Django 및 필수 라이브러리
+asgiref==3.8.1
+Django==4.2.17
+sqlparse==0.5.3
+tzdata==2025.1
+djangorestframework==3.15.2
+djangorestframework_simplejwt==5.4.0 #  JWT 인증 패키지
+django-cors-headers==4.3.1 # frontend와 연결시 필요
+
+# 환경 변수 관리 (추가됨) .env 파일에서 환경 변수를 로드
+python-dotenv==1.0.1  
+
+# 캐싱 및 요청 관련
+redis==5.2.1
+requests==2.32.3
+urllib3==2.3.0
+
+# OpenAI API 및 AI 관련 패키지
+openai==1.61.1
+langchain==0.1.16
+tiktoken==0.7.0
+chromadb==0.4.24  # 벡터 데이터베이스 (임베딩 저장 및 검색)
+pypdf==4.2.0          # PDF 파일을 파싱하는 라이브러리
+faiss-cpu==1.7.4      # Facebook AI Similarity Search (벡터 검색 라이브러리)
+
+# 크롤링 관련 (+challenge 기능)
+# beautifulsoup4==4.12.3     # HTML, XML 파싱을 위한 웹 크롤링 라이브러리
+# lxml==5.1.0                # HTML/XML을 빠르게 파싱하는 라이브러리(BeautifulSoup과 사용)
+
+# 개발 편의 패키지
+django-extensions==3.2.3
+django-seed==0.3.1  # dummy data 삽입
+Faker==33.3.1	     # dummy data 생성
+django-silk==5.3.2   # Django에서 요청/응답을 프로파일링하는 디버깅 툴
+drf-spectacular==0.28.0   # Django REST Framework API 문서 자동 생성 (Swagger, OpenAPI 지원)
+
+# 코드 스타일 및 포맷팅 
+black==24.2.0   # Python 코드 포매터 (자동 정렬)
+ruff==0.2.1        #  빠른 코드 린터 및 포매터 (PEP8 검사)
+
+# 개발 도구
+ipython==8.32.0
