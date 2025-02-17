@@ -53,21 +53,8 @@ class UserList(APIView):
             )
             EmailThread(email).start()
 
-            print("✅ 이메일이 비동기적으로 전송되었습니다.")
-
-            token = TokenObtainPairSerializer.get_token(user)
-            refresh_token = str(token)
-            access_token = str(token.access_token)
-
             return Response(
-                {
-                    "user": serializer.data,
-                    "message": "회원가입이 완료되었습니다",
-                    "jwt_token": {
-                        "access_token": access_token,
-                        "refresh_token": refresh_token,
-                    },
-                },
+                {"message": "회원가입이 완료되었습니다. 이메일 인증을 진행해주세요."},
                 status=status.HTTP_201_CREATED,
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -93,10 +80,27 @@ class ActivateAccountView(APIView):
             user.activation_token = None  # 토큰 초기화
             user.save()
 
-            return Response(
-                {"message": "이메일 인증이 완료!"},
+            token = TokenObtainPairSerializer.get_token(user)
+            refresh_token = str(token)
+            access_token = str(token.access_token)
+
+            response = Response(
+                {
+                    "user": UserSerializers(user).data,
+                    "message": "이메일 인증이 완료되었습니다. 자동 로그인 되었습니다!",
+                    "jwt_token": {
+                        "access_token": access_token,
+                        "refresh_token": refresh_token,
+                    },
+                },
                 status=status.HTTP_200_OK,
             )
+
+            response.set_cookie("access_token", access_token, httponly=True)
+            response.set_cookie("refresh_token", refresh_token, httponly=True)
+
+            return response
+
         except Exception as e:
             return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
