@@ -47,4 +47,5 @@ Thumbs.db
 # 로그 파일 관련
 logs/
 
-
+# Python 버전관리 프로그램 pyenv
+.python-version
