@@ -9,4 +9,5 @@ urlpatterns = [
     path("login/", views.UserLogin.as_view(), name="user_login"),
     path("logout/", views.UserLogout.as_view(), name="user_logout"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("emailauth/<str:token>/", views.ActivateAccountView.as_view(), name="activate-account"),
 ]
