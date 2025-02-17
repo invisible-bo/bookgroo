@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     
     # 추가된 앱
     "rest_framework",
-    "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
 
     # local apps (추가)
