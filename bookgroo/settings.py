@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 import json
 from pathlib import Path
+from datetime import timedelta
 
 # .env 파일 로드
 load_dotenv()
@@ -28,8 +29,13 @@ if not OPENAI_API_KEY and not os.environ.get("OPENAI_WARNING_SHOWN"):
 # DEBUG 모드
 DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
-# ✅ ALLOWED_HOSTS 수정 (JSON 파싱 추가)
-ALLOWED_HOSTS = json.loads(os.getenv("DJANGO_ALLOWED_HOSTS", '["localhost", "127.0.0.1"]'))
+# ALLOWED_HOSTS (VITE 개발서버와 외부 접속 IP 추가)
+ALLOWED_HOSTS = json.loads(
+    os.getenv(
+        "DJANGO_ALLOWED_HOSTS",
+        '["localhost", "127.0.0.1", "0.0.0.0", "211.38.232.27"]'
+    )
+)
 
 # INSTALLED_APPS
 INSTALLED_APPS = [
@@ -44,6 +50,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "corsheaders",
+
+    # local apps (추가)
+    "accounts",
 ]
 
 # MIDDLEWARE
@@ -95,11 +104,35 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-# ✅ CORS 설정 (JSON 파싱 적용)
-CORS_ALLOWED_ORIGINS = json.loads(os.getenv("DJANGO_CORS_ALLOWED_ORIGINS", '["http://localhost:3000"]'))
+# JWT 설정 (유효기간 및 Refresh Rotation)
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+}
+
+# CORS 설정 (JSON 파싱 적용, VITE 개발서버와 외부 접속 IP 추가)
+CORS_ALLOWED_ORIGINS = json.loads(
+    os.getenv(
+        "DJANGO_CORS_ALLOWED_ORIGINS",
+        '["http://localhost:3000", "http://localhost:5173", "http://211.38.232.27:5173"]'
+    )
+)
 CORS_ALLOW_CREDENTIALS = True
+
+# CORS_ALLOW_HEADERS (CSRF 문제 발생 시 필요)
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'authorization',
+    'content-type',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 # 국제화 설정
 LANGUAGE_CODE = "ko-kr"
