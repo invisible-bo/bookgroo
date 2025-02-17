@@ -90,6 +90,9 @@ TEMPLATES = [
 # WSGI 설정
 WSGI_APPLICATION = "bookgroo.wsgi.application"
 
+# AUTH_USER_MODEL 추가
+AUTH_USER_MODEL = "accounts.User"
+
 # SQLite 데이터베이스 설정 (CONN_MAX_AGE 추가)
 DATABASES = {
     "default": {
