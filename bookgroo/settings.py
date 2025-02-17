@@ -32,8 +32,7 @@ DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 # ALLOWED_HOSTS (VITE 개발서버와 외부 접속 IP 추가)
 ALLOWED_HOSTS = json.loads(
     os.getenv(
-        "DJANGO_ALLOWED_HOSTS",
-        '["localhost", "127.0.0.1", "0.0.0.0", "211.38.232.27"]'
+        "DJANGO_ALLOWED_HOSTS", '["localhost", "127.0.0.1", "0.0.0.0", "211.38.232.27"]'
     )
 )
 
@@ -45,12 +44,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     # 추가된 앱
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
-
     # local apps (추가)
     "accounts",
 ]
@@ -122,19 +119,19 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = json.loads(
     os.getenv(
         "DJANGO_CORS_ALLOWED_ORIGINS",
-        '["http://localhost:3000", "http://localhost:5173", "http://211.38.232.27:5173"]'
+        '["http://localhost:3000", "http://localhost:5173", "http://211.38.232.27:5173"]',
     )
 )
 CORS_ALLOW_CREDENTIALS = True
 
 # CORS_ALLOW_HEADERS (CSRF 문제 발생 시 필요)
 CORS_ALLOW_HEADERS = [
-    'accept',
-    'authorization',
-    'content-type',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
 ]
 
 # 국제화 설정
