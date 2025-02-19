@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { loginUser } from '@/api/authApi'; //API 모듈 임포트
 
 export default function HomeLoginPage() {
   const [username, setUsername] = useState('');
@@ -8,28 +9,37 @@ export default function HomeLoginPage() {
   const { isLoggedIn, login } = useAuth();
   const navigate = useNavigate();
 
-  // ✅ 로그인 상태면 바로 챗봇 페이지로 이동
+  //로그인 상태면 바로 챗봇 페이지로 이동
   useEffect(() => {
     if (isLoggedIn) {
       navigate('/chatbot');
     }
   }, [isLoggedIn, navigate]);
 
-  const handleLogin = (e) => {
+  //Django 로그인 요청 처리
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username && password) {
-      login(); // AuthContext를 통한 상태 업데이트
-      localStorage.setItem('username', username); // ✅ 이름도 저장
-      alert(`${username}님! BookGroo에 오신 걸 환영합니다!`);
-      navigate('/chatbot');
-    } else {
+    if (!username || !password) {
       alert('아이디와 비밀번호를 입력해주세요.');
+      return;
+    }
+
+    try {
+      const response = await loginUser({ username, password });
+      console.log('로그인 성공:', response);
+
+      //AuthContext 업데이트 및 localStorage 저장
+      login();  
+      localStorage.setItem('username', username);
+
+      alert(`${username}님, BookGroo에 오신 걸 환영합니다!`);
+      navigate('/chatbot');
+    } catch (error) {
+      alert(`로그인 실패: ${error.message || '서버 오류'}`);
     }
   };
 
-  
-
-  // ✅ username 자동 복원
+  //username 자동 복원
   useEffect(() => {
     const savedUsername = localStorage.getItem('username');
     if (savedUsername) {
@@ -60,7 +70,6 @@ export default function HomeLoginPage() {
     </div>
   );
 }
-
 
 const styles = {
   container: {
