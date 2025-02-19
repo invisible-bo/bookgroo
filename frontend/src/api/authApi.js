@@ -4,7 +4,13 @@ const API_URL = 'http://127.0.0.1:8000/api/v1/accounts';
 
 //회원가입 (POST)
 export const registerUser = async (userData) => {
-    try {
+
+  const requestData = {
+    ...userData,
+    nickname: userData.nickname || "",
+  };
+
+  try {
       const response = await axios.post(`${API_URL}/`, userData);
       return response.data;
     } catch (error) {

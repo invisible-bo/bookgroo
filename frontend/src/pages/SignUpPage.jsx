@@ -6,6 +6,7 @@ export default function RegisterPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
+    nickname: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -35,6 +36,7 @@ export default function RegisterPage() {
       // Django에 회원가입 요청
       const response = await registerUser({
         username: formData.username,
+        nickname: formData.nickname,
         email: formData.email,
         password: formData.password,
       });
@@ -61,6 +63,15 @@ export default function RegisterPage() {
           style={styles.input}
           required
         />
+        <input
+          type="text"
+          name="nickname"  // 
+          placeholder="닉네임"
+          value={formData.nickname}
+          onChange={handleChange}
+          style={styles.input}
+          required
+        />  
         <input
           type="email"
           name="email"
