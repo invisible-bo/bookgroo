@@ -28,11 +28,13 @@ export default function HomeLoginPage() {
       const response = await loginUser({ username, password });
       console.log('로그인 성공:', response);
 
-      //AuthContext 업데이트 및 localStorage 저장
-      login();  
-      localStorage.setItem('username', username);
+      const nickname = response?.user?.nickname || "사용자"; 
 
-      alert(`${username}님, BookGroo에 오신 걸 환영합니다!`);
+      //AuthContext 업데이트 및 localStorage 저장
+      login();
+      localStorage.setItem('nickname', nickname); 
+
+      alert(`${nickname}님, BookGroo에 오신 걸 환영합니다!`);
       navigate('/chatbot');
     } catch (error) {
       alert(`로그인 실패: ${error.message || '서버 오류'}`);
