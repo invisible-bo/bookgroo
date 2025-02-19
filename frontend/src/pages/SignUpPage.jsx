@@ -41,10 +41,15 @@ export default function RegisterPage() {
         password: formData.password,
       });
 
-      setSuccess(response.message || '회원가입 성공! 이메일을 확인하세요.');
+
+
+      const successMessage = response.message || '회원가입이 완료되었습니다! 이메일을 확인하고 인증을 완료하세요';
+      setSuccess(successMessage);
+      alert(successMessage);
+            
       setTimeout(() => {
-        navigate('/login'); // 로그인 페이지로 리다이렉트
-      }, 1500);
+        navigate('/'); // 로그인 페이지로 리다이렉트
+      }, 1000);
     } catch (error) {
       setError(error.message || '회원가입 실패');
     }
