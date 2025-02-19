@@ -1,4 +1,3 @@
-// src/components/layout/Header.jsx
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext'; 
@@ -8,7 +7,7 @@ import logo from '/Logo.png';
 const Header = () => {
   const { isLoggedIn, login, logout } = useAuth();
 
-  // ✅ 새로고침 시 로그인 상태 복원
+  // 새로고침 시 로그인 상태 복원
   useEffect(() => {
     const storedStatus = localStorage.getItem('isLoggedIn') === 'true';
     if (storedStatus) {
@@ -27,8 +26,10 @@ const Header = () => {
         {/* 네비게이션 */}
         <nav className="nav-links">
           <Link to="/">Home</Link>
-          <Link to="/signup">Sign up</Link>
-          {/* ✅ 로그인 시에만 프로필과 로그아웃 표시 */}
+          {/* 로그인 상태일 때 Sign up 버튼 숨기기 */}
+          {!isLoggedIn && <Link to="/signup">Sign up</Link>}
+          
+          {/* 로그인 시에만 프로필과 로그아웃 표시 */}
           {isLoggedIn && (
             <>
               <Link to="/profile">Profile</Link>
@@ -44,3 +45,4 @@ const Header = () => {
 };
 
 export default Header;
+
