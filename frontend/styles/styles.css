@@ -1,0 +1,152 @@
+/* 헤더 스타일 */
+header {
+    position: fixed;  
+    top: 0;
+    left: 0;
+    width: 100%;   
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;
+    z-index: 1000;
+}    
+
+/* 네비게이션 스타일 */
+nav {
+    flex-grow: 1;
+    max-width: 600px;  
+    display: flex;
+    justify-content: flex-start;  
+    align-items: center;
+    margin-right: -250px;  
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;  
+}
+
+/* 메뉴 항목 정렬 */
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+/* 링크 스타일 */
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: color 0.3s ease-in-out;
+}
+
+/* 링크 호버 */
+nav ul li a:hover {
+    color: #1e9c1e; 
+}
+
+/* 로그아웃 버튼 스타일 */
+nav ul li button {
+    background-color: #1e9c1e;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+nav ul li button:hover {
+    background-color: #115f2e;
+}
+
+
+
+/* 전체 페이지 중앙 정렬 */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* 세로 중앙 정렬 */
+    align-items: center;  /* 가로 중앙 정렬 */
+    height: 100vh;  /* 화면 전체 높이 사용 */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0a0909;
+}
+
+
+h2 {
+    text-align: center; /* 제목 중앙 정렬 */
+    margin-bottom: 20px;
+}
+
+/* 폼 컨테이너 중앙 정렬 */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px; 
+    padding: 20px;
+    background: #fff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* input 스타일 */
+form {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    width: 100%;
+}
+
+
+form input {
+    width: 100%;  /* input칸을 폼 너비에 맞춤 */
+    padding: 10px;
+    margin-bottom: 10px;  /* input칸 사이 간격 */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 버튼 스타일 */
+form button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+form button:hover {
+    background: #0056b3;
+}
+
+footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    width: 100%;  
+    background-color: #222;  
+    color: white;
+    text-align: center;  
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+/*text color class*/
+.text-white {
+    color: white;
+}
