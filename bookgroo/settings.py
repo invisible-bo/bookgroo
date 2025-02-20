@@ -115,13 +115,10 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
 }
 
-# CORS 설정 (JSON 파싱 적용, VITE 개발서버와 외부 접속 IP 추가)
-CORS_ALLOWED_ORIGINS = json.loads(
-    os.getenv(
-        "DJANGO_CORS_ALLOWED_ORIGINS",
-        '["http://localhost:3000", "http://localhost:5173", "http://211.38.232.27:5173"]',
-    )
-)
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",  # HTML + JS 프론트엔드에서 접근 가능하도록
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # CORS_ALLOW_HEADERS (CSRF 문제 발생 시 필요)
@@ -150,7 +147,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Default primary key 설정
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-#이메일 인증
+# 이메일 인증
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
