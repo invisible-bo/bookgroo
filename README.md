@@ -18,7 +18,7 @@
 
 |Role        |Name      |GitHub        |Responsibilities |
 |------------|----------|--------------|-----------------|
-|team leader:crown:|**이고운**| [@dlrhdns75177](https://github.com/dlrhdns75177)|        |
+|team leader👑|**이고운**| [@dlrhdns75177](https://github.com/dlrhdns75177)|        |
 |team member |**맹주형**| [@jhmang1128](https://github.com/jhmang1128)     |        |
 |team member |**정지웅**| [@JaceJung-dev](https://github.com/JaceJung-dev) |        |
 |team member |**최보근**| [@invisible-bo](https://github.com/invisible-bo) |        |
@@ -39,7 +39,7 @@
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)&nbsp;![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)&nbsp;![DRF](https://img.shields.io/badge/DRF-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)&nbsp;![DRFJWT](https://img.shields.io/badge/DRFJWT-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 
 **Frontend**
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)&nbsp;![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)&nbsp;![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)&nbsp;![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)&nbsp;![axios](https://img.shields.io/badge/axios-%235A29E4.svg?style=for-the-badge&logo=axios&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)&nbsp;![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)&nbsp;![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)&nbsp;![axios](https://img.shields.io/badge/axios-%235A29E4.svg?style=for-the-badge&logo=axios&logoColor=white)
 
 **AI**
 ![OPENAI](https://img.shields.io/badge/OPENAI-%23412991.svg?style=for-the-badge&logo=OPENAI&logoColor=white)&nbsp;![langchain](https://img.shields.io/badge/langchain-%231C3C3C.svg?style=for-the-badge&logo=langchain&logoColor=white)&nbsp;![imagen3](https://img.shields.io/badge/imagen3-%231C3C3C.svg?style=for-the-badge&logo=imagen3&logoColor=white)
