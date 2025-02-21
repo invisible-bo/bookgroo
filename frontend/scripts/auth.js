@@ -69,4 +69,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-export default {}; //모듈화
+const auth = {
+    isLoggedIn: () => {
+        return !!localStorage.getItem("access_token");  // 로그인 여부 확인
+    },
+    logout: () => {
+        localStorage.removeItem("access_token");
+        window.location.href = "login.html";  // 로그아웃 후 로그인 페이지로 이동
+    }
+};
+
+export default auth;  // 모듈화
