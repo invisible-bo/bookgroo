@@ -20,10 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             try {
                 const response = await api.post("", { username, nickname, email, password });
+                
+                console.log("회원가입 응답:", response);
 
                 if (response) {
                     alert("회원가입 성공! 이메일 인증 후 로그인하세요.");
-                    window.location.href = "homelogin.html";  //회원가입 성공 후 로그인 페이지로 이동X작동안됨
+                    setTimeout(() => {
+                        window.location.href = "/frontend/pages/homelogin.html"; 
+                    }, 500);  //회원가입 성공 후 로그인 페이지로 이동X작동안됨
                 } else {
                     throw new Error("회원가입 실패");
                 }
