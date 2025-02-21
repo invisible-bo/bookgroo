@@ -13,10 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 const response = await api.post("login/", { username, password });
 
                 if (response.jwt_token) {
-                    const { access_token, refresh_token } = response.jwt_token;
-                    localStorage.setItem("access_token", access_token);
+                    const { access_token, refresh_token } = response.jwt_token;      
+                    localStorage.setItem("access_token", access_token);             //로그인시 localStorage에 토큰 저장
                     localStorage.setItem("refresh_token", refresh_token);
-                    
+                    localStorage.setItem("username", response.user.username);       ////로그인시 localStorage에 user profile 저장
+                    localStorage.setItem("nickname", response.user.nickname);
+                    localStorage.setItem("email", response.user.email);
+
                     alert(`환영합니다 ${response.user.nickname}님!`); //로그인 성공 시 nick name환영 문구
                     window.location.href = "chatbot.html";  //로그인 성공 시 챗봇 페이지로 이동
                 } else {
@@ -48,9 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
             try {
                 const response = await api.post("", { username, nickname, email, password });
 
-                if (response.message) {
+                if (response) {
                     alert("회원가입 성공! 이메일 인증 후 로그인하세요.");
-                    window.location.href = "homelogin.html";  //회원가입 성공 후 로그인 페이지로 이동
+                    window.location.href = "homelogin.html";  //회원가입 성공 후 로그인 페이지로 이동X작동안됨
                 } else {
                     throw new Error("회원가입 실패");
                 }
