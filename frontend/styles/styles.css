@@ -101,34 +101,35 @@ h2 {
     border-radius: 10px;
 }
 
-/* input 스타일 */
+/* form 내부 input 스타일 */
 form {
-    display: flex;
-    flex-direction: column; /* 세로 정렬 */
     width: 100%;
+    max-width: 350px; /* 폼 전체 크기 설정 */
+    margin: auto; /* 가운데 정렬 */
 }
-
 
 form input {
-    width: 100%;  /* input칸을 폼 너비에 맞춤 */
-    padding: 10px;
-    margin-bottom: 10px;  /* input칸 사이 간격 */
-    border: 1px solid #ddd;
+    width: 100%; /* 부모 요소 크기에 맞게 설정 */
+    max-width: 100%; /* 강제로 줄어들지 않도록 설정 */
+    height: 45px;
+    padding: 15px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    box-sizing: border-box; /* padding 포함해서 크기 유지 */
+    margin-bottom: 10px;
 }
 
-/* 버튼 스타일 */
 form button {
     width: 100%;
-    padding: 10px;
-    background: #007bff;
+    height: 50px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 }
+
 
 form button:hover {
     background: #0056b3;
