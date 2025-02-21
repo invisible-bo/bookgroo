@@ -1,4 +1,4 @@
-import api from "../scripts/api.js";  //api.js에서 API 함수 불러오기, 인증 && 권한 관리 모듈 생성
+import api from "./api.js";  //api.js에서 API 함수 불러오기, 인증 && 권한 관리 모듈 생성
 
 document.addEventListener("DOMContentLoaded", function () {
     // 로그인 기능
@@ -68,3 +68,5 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "chatbot.html";
     }
 });
+
+export default {}; //모듈화

@@ -1,4 +1,4 @@
-import auth from "../scripts/auth.js"; // 인증 모듈 가져오기
+import auth from "./auth.js"; // 인증 모듈 가져오기
 
 document.addEventListener("DOMContentLoaded", function () {
 
