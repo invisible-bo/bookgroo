@@ -1,7 +1,7 @@
-import api from "../scripts/api.js";  //api.js에서 API 함수 불러오기
+import api from "../scripts/api.js";  //api.js에서 API 함수 불러오기, 인증 && 권한 관리 모듈 생성
 
 document.addEventListener("DOMContentLoaded", function () {
-    // 🚀 로그인 기능
+    // 로그인 기능
     const loginForm = document.getElementById("login-form");
     if (loginForm) {
         loginForm.addEventListener("submit", async function (e) {
