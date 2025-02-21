@@ -45,11 +45,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 추가된 앱
+    "django_seed",
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
     # local apps (추가)
     "accounts",
+    "chatrooms",
 ]
 
 # MIDDLEWARE
