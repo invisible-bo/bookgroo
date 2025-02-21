@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     localStorage.setItem("username", response.user.username);
                     localStorage.setItem("nickname", response.user.nickname);
                     localStorage.setItem("email", response.user.email);
-
-                    alert(`환영합니다 ${response.user.nickname}님!`);
+                    localStorage.setItem("isLoggedIn", "true"); // 로그인 상태 저장
+                    alert(`📚환영합니다 ${response.user.nickname}님!📚`);
                     window.location.href = "chatbot.html";
                 } else {
                     throw new Error("로그인 실패");
