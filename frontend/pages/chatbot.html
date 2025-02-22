@@ -1,16 +1,38 @@
-<!--챗봇-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookgroo</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/chatbot.css">
 </head>
+
 <body>
-    <h1 class="text-white">Chatbot Page</h1>
-    <script src="../scripts/include.js"></script>  <!-- 헤더, 푸터 로드 -->
+    <div class="chat-layout">
+        <div class="chat-history">
+            <ul id="chat-list">
+                <!-- 과거챗리스트 list -->
+            </ul>
+        </div>
+        <button class="toggle-btn">📚</button>
+
+        <!-- 과거 챗박스 -->
+
+        <div class="chat-container"> <!-- 실시간 챗박스 -->
+
+            <div class="chat-box">
+                <!-- text area -->
+            </div>
+            <form class="chat-input">
+                <input type="text" class="chat-input" placeholder="메시지를 입력하세요">
+                <button type="submit">📖</button>    
+            </form>    
+        </div>
+    </div>
+    <script src="../scripts/include.js"></script>
+    <script src="../scripts/chatroom.js"></script>
 </body>
 </html>
 
