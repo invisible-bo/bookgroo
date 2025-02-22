@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.removeItem("access_token");     //localStorage저장 토큰 삭제
             localStorage.removeItem("refresh_token");
             localStorage.removeItem("nickname");
-            alert("로그아웃 되었습니다.");
+            alert("로그아웃 되었습니다");
             window.location.href = "homelogin.html";  //로그아웃 후 홈으로 이동
         });
     }
