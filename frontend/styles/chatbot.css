@@ -97,10 +97,12 @@
 }
 
 .chat-box {
+    color: white;
+    text-shadow: none !important;
     flex-grow: 1;
-    width: 100%; 
+    width: 80%; 
     padding: 10px;
-    max-height: 390px;
+    max-height: 580px;
     overflow-y: auto;
     box-sizing: border-box;
     margin-bottom: 0;
@@ -159,6 +161,38 @@
     background-color: #00ff87;
 }
 
+/* 딜리트버튼 */
+.delete_btn {
+    background: #1a1a1a !important;
+    position: relative;
+    border-radius: 0 10px 10px 0 !important; 
+
+}
+
+/* 딜리트 버튼 툴팁 */
+.delete_btn::after {
+    content: "채팅삭제"; 
+    position: absolute;
+    top: -20px;  
+    right: 10%; /* 버튼 오른쪽으로 이동 */
+    transform: translateY(-50%); /* Y축 기준 중앙 정렬 */
+    background-color: #1a1a1a !important;
+    color: rgb(254, 254, 254) !important;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;  /* 기본적으로 숨김 */
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.delete_btn:hover::after {
+    opacity: 1;   /* 0,1만 */
+    visibility: visible;
+}
+
+
 @media (max-width: 768px) {
     .chat-container {
         width: 95vw;
@@ -169,4 +203,50 @@
         width: 95%;
         bottom: 5px;
     }
+}
+
+.bot-message {
+    color: #f9fbfa;  
+    text-align: left; 
+
+}
+ /* 뉴챗 버튼 */
+.new_chat_btn {
+    position: absolute;  /* 절대 위치 지정 */
+    top: 10px;  /* 상단에서 10px 거리 */
+    right: 10px;  /* 오른쪽에서 20px 거리 */
+    padding: 8px 8px;  /* 버튼 크기 조정 */
+    background-color: #00e0ff; /* 버튼 색상 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000; /* 다른 요소 위에 배치 */
+}
+
+.new_chat_btn:hover {
+    background-color: #00ff87; /* 호버 시 색상 변경 */
+}
+
+/* 딜리트 버튼 툴팁 */
+.new_chat_btn::after {
+    content: "새 채팅창"; 
+    position: absolute;
+    bottom: -5px;  
+    right: 100%; /* 버튼 오른쪽으로 이동 */
+    transform: translateY(-50%); /* Y축 기준 중앙 정렬 */
+    background-color: #1a1a1a !important;
+    color: rgb(254, 254, 254) !important;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;  /* 기본적으로 숨김 */
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.new_chat_btn:hover::after {
+    opacity: 1;   /* 0,1만 */
+    visibility: visible;
 }
