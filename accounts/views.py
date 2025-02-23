@@ -9,7 +9,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.core.mail import EmailMessage
-from .models import User
+from .models import User, Genre
 from .serializers import UserSerializers
 from .utils import EmailThread
 
@@ -30,9 +30,13 @@ class UserList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        preferred_genres_ids = request.data.pop("preferred_genres", [])
         serializer = UserSerializers(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+
+            genres = Genre.objects.filter(id__in=preferred_genres_ids) #선택한 장르 저장
+            user.preferred_genres.set(genres)
 
             user.is_active = False
             user.activation_token = str(uuid.uuid4())  # 이메일 인증 토큰 생성
@@ -124,9 +128,15 @@ class UserDetail(APIView):
     # 유저 정보 수정
     def put(self, request, pk):
         user = self.get_object(pk)
+        preferred_genres_ids = request.data.pop("preferred_genres", None)
         serializer = UserSerializers(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
+            #선택한 장르 업데이트
+            if preferred_genres_ids is not None:
+                genres = Genre.objects.filter(id__in=preferred_genres_ids)
+                user.preferred_genres.set(genres)
+                
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
