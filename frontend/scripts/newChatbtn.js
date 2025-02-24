@@ -1,27 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ newChatbtn.js 로드 완료");
+import { createChatroom, fetchMessages } from "./chatrooms.js";
 
-    setTimeout(() => {  // 🚀 HTML 요소가 완전히 로드된 후 실행하도록 약간의 딜레이 추가
-        const newChatBtn = document.getElementById("newChatbtn");
-        const chatBox = document.querySelector(".chat-box");
+document.getElementById("newChatbtn").addEventListener("click", async function () {
+    console.log("➕ newChatbtn clicked");
 
-        if (!newChatBtn) {
-            console.error("❌ 'newChatbtn' 버튼을 찾을 수 없습니다. HTML 파일에서 ID가 정확한지 확인하세요.");
-            return;
-        }
+    //  새 채팅방 생성
+    const newChatroom = await createChatroom();
+    console.log("생성된 채팅방 정보:", newChatroom); // newChatroom 확인
 
-        if (!chatBox) {
-            console.error("❌ '.chat-box' 요소를 찾을 수 없습니다.");
-            return;
-        }
+    if (!newChatroom || !newChatroom.id) {
+        console.error("새 채팅방을 생성할 수 없습니다. newChatroom 값:", newChatroom);
+        return;
+    }
 
-        newChatBtn.addEventListener("click", function () {
-            console.log("➕ 새 채팅방 버튼 클릭됨");
+    // 현재 채팅방 ID 업데이트
+    window.currentChatroomId = newChatroom.id;
+    console.log(`새로운 채팅방 ID로 업데이트됨: ${window.currentChatroomId}`);
 
-            // 🚀 채팅창 초기화
-            chatBox.innerHTML = ""; 
+    // 기존 채팅 클리어
+    const chatBox = document.querySelector(".chat-box");
+    chatBox.innerHTML = "";  
 
-            console.log("✅ 채팅창 초기화 완료 (모든 메시지 삭제됨)");
-        });
-    }, 100); // 100ms 딜레이 (브라우저가 요소를 렌더링할 시간을 줌)
+    // 채팅방 메시지를 가져와서 화면 갱신
+    fetchMessages(window.currentChatroomId);  // 새 채팅방의 데이터를 가져옴
+
 });

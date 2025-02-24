@@ -7,15 +7,23 @@ async function getOrCreateChatroom() {
         console.log("채팅방이 없음 → 새 채팅방 생성 시도");
         const newChatroom = await createChatroom();
         
-        if (!newChatroom) {
+        if (!newChatroom || !newChatroom.id) {
             console.error("채팅방 생성 실패!");
             return null;
         }
 
+        // 새 채팅방 ID를 현재 채팅방 ID로 업데이트
+        window.currentChatroomId = newChatroom.id;
+        console.log(`새로운 채팅방 ID 설정됨: ${window.currentChatroomId}`);
+
         return newChatroom;
     } else {
         console.log("기존 채팅방 존재:", chatrooms);
-        return chatrooms[0]; // 첫 번째 채팅방 반환
+        
+        window.currentChatroomId = chatrooms[chatrooms.length - 1].id;
+        console.log(`기존 채팅방 중 최신 채팅방 ID 설정됨: ${window.currentChatroomId}`);
+
+        return chatrooms[chatrooms.length - 1];
     }
 }
 
@@ -44,7 +52,7 @@ async function fetchChatrooms() {
 }
 
 // 새 채팅방 생성
-async function createChatroom() {
+export async function createChatroom() {
     try {
         const response = await fetch("http://127.0.0.1:8000/api/v2/chatrooms/", {
             method: "POST",
@@ -63,7 +71,8 @@ async function createChatroom() {
         }
 
         const newChatroom = await response.json();
-        console.log("채팅방 생성 성공:", newChatroom);
+        console.log("new 채팅방 생성 성공:", newChatroom);
+
         return newChatroom;
     } catch (error) {
         console.error("채팅방 생성 실패:", error);
@@ -72,7 +81,12 @@ async function createChatroom() {
 }
 
 // 서버에서 메시지 가져오기
-async function fetchMessages(chatroomId) {
+export async function fetchMessages(chatroomId = window.currentChatroomId) {
+    if (!chatroomId) {
+        console.error("채팅방 ID가 없습니다!");
+        return;
+    }
+
     try {
         const response = await fetch(`http://127.0.0.1:8000/api/v2/chatrooms/${chatroomId}/messages/`, {
             method: "GET",
@@ -125,7 +139,7 @@ function displayMessages(messages) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// 사용자 메시지 서버로 전송
+// user msg 서버로 전송
 async function sendMessage(chatroomId, message) {
     try {
         const response = await fetch(`http://127.0.0.1:8000/api/v2/chatrooms/${chatroomId}/messages/`, {
