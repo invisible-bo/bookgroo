@@ -205,11 +205,24 @@
     }
 }
 
-.bot-message {
-    color: #f9fbfa;  
-    text-align: left; 
-
+.user-message {
+    background-color: #1a1a1a;
+    color: #3caf6c;
+    font-weight: 600;
+    text-align: right;
+    align-self: flex-end;
+    margin-top: 25px;
 }
+
+.bot-message {
+    background-color: #131313;
+    text-align: left;
+    align-self: flex-start;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 15px 15px 15px 15px;
+    margin-top: 10px;
+}
+
  /* 뉴챗 버튼 */
 .new_chat_btn {
     position: absolute;  /* 절대 위치 지정 */
