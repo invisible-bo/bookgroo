@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.removeItem("nickname");
             localStorage.removeItem("email");  
             localStorage.removeItem("username"); 
-            localStorage.removeItem("isLoggedIn");  
+            localStorage.removeItem("isLoggedIn"); 
+            localStorage.removeItem("preferredGenres"); 
 
             alert("로그아웃 되었습니다");
 

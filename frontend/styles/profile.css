@@ -7,3 +7,13 @@
     width: 300px;
     transition: transform 0.3s ease;
 }
+
+.genre-tag {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 5px;
+    font-size: 14px;
+}
