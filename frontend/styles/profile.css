@@ -1,19 +1,53 @@
 .profile-card {
-    background: rgba(20, 20, 20, 0.9);
+    background-color: rgba(20, 20, 20, 0.95); 
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 0px 15px rgba(0, 224, 255, 0.8); 
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px #00FFFF; 
     text-align: center;
-    width: 300px;
-    transition: transform 0.3s ease;
+    width: 420px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;  /* 세로 정렬 */
+    align-items: center;  /* 가운데 정렬 */
+}
+
+.genre-container {
+    display: flex;
+    flex-direction: column;  /* 세로 정렬 */
+    align-items: center;  /* 태그를 가운데 정렬 */
+    gap: 10px;  /* 태그 간 간격 */
+    margin-top: 5px; 
 }
 
 .genre-tag {
-    display: inline-block;
-    background-color: #3498db;
-    color: white;
-    padding: 5px 10px;
-    margin: 2px;
-    border-radius: 5px;
+    display: block; 
+    background-color: #00e0ff; 
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(0, 0, 0);
+    padding: 10px 16px;
+    border-radius: 10px;
     font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #00FFFF;
+    box-shadow: 0px 0px 10px #00e0ff; 
+    transition: all 0.3s ease-in-out;
+    width: 120px; 
+    text-align: center; 
+}
+
+
+.genre-tag:hover {
+    background-color: #00ff87; 
+
+    transform: scale(1.05);
+}
+
+
+.profile-text {
+    color: #f2f8f8; 
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;  
+    text-align: center; 
+    text-shadow: none
 }

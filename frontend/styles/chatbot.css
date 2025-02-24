@@ -5,8 +5,6 @@
 }
 
 
-
-
 /* chat box */
 .chat-container {
     position: relative;
@@ -15,19 +13,18 @@
     justify-content: flex-end;
     align-items: center;
 
-    width: 90vw;  /* 화면 너비의 90% 차지 */
-    max-width: 700px;  /* 최대 너비 제한 */
+    width: 90vw;  
+    max-width: 700px;  
 
-    min-height: 80vh;  /* 🚀 화면 크기가 작을 때 자동 조절 */
+    min-height: 80vh; 
     max-height: 100vh;
     height: auto; 
 
     background-color: #1a1a1a;
-    border: 2px solid cyan;
     border-radius: 10px;
-
+    box-shadow: 0px 0px 10px rgba(0, 224, 255, 0.7); 
     padding: 10px;  /* padding을 줄여 작은 화면에서도 내부 요소가 너무 압축되지 않게 함 */
-    margin-top: 80px;  /* 🚀 헤더를 피하기 위한 상단 여백 */
+    margin-top: 80px;  /* 헤더를 피하기 위한 상단 여백 */
     margin-bottom: 60px; /* 내부 요소 넘칠 경우 방지 */
 
     box-sizing: border-box;
@@ -126,13 +123,17 @@
     font-weight: 600;
     text-align: right;
     align-self: flex-end;
-    margin-top: 35px;
+    margin-top: 15px;
 }
 
 .bot-message {
     background-color: #131313;
     text-align: left;
     align-self: flex-start;
+    white-space: pre-line;  
+    word-wrap: break-word;  
+    overflow-wrap: break-word; 
+    line-height: 1.6; 
     font-family: 'Roboto', sans-serif;
     border-radius: 15px 15px 15px 15px;
     margin-top: 10px;
@@ -141,10 +142,10 @@
  /* 뉴챗 버튼 */
 .new_chat_btn {
     position: absolute;  /* 절대 위치 지정 */
-    top: 10px;  /* 상단에서 10px 거리 */
-    right: 10px;  /* 오른쪽에서 20px 거리 */
-    padding: 8px 8px;  /* 버튼 크기 조정 */
-    background-color: #00e0ff; /* 버튼 색상 */
+    top: 10px; 
+    letf: -10px; 
+    padding: 8px 8px;  
+    background-color: #303232; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
