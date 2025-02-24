@@ -6,7 +6,6 @@ from django.core import serializers
 # from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import status
 
 # import os
 # import sys
@@ -15,78 +14,64 @@ from rest_framework import status
 from .models import Chatroom, Message
 from .serializers import ChatRoomSerializer
 from .serializers import MessageSerializer
-from LangChain.main_chatbot import chatbot
-from rest_framework.permissions import IsAuthenticated
 
+from LangChain.main_chatbot import chatbot
 
 class Chatroom_List_APIView(APIView):
-
-    # permission_classes = [IsAuthenticated]
-
     def get(self, request):
         chatrooms = Chatroom.objects.all()
         serializer = ChatRoomSerializer(chatrooms, many=True)
         return Response(serializer.data)
-
+    
     def post(self, request):
         # print(request.user.id)
         request.data["user_id"] = request.user.id
         serializer = ChatRoomSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
 
 class Chatroom_APIView(APIView):
-
-    # permission_classes = [IsAuthenticated]
-
     def get(self, request, pk):
         chatroom = get_object_or_404(Chatroom, pk=pk)
         serializer = ChatRoomSerializer(chatroom)
         return Response(serializer.data)
-
+        
     def delete(self, request, pk):
         chatroom = get_object_or_404(Chatroom, pk=pk)
         chatroom.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
+        return Response(status=204)
+        
 class Message_List_APIView(APIView):
-
-    # permission_classes = [IsAuthenticated]
-
     def get(self, request, chatroom_pk):
         chatroom = get_object_or_404(Chatroom, pk=chatroom_pk)
         messages = chatroom.messages.all()
         serializer = MessageSerializer(messages, many=True)
         return Response(serializer.data)
-
+    
     def post(self, request, chatroom_pk):
         # print(chatroom_pk)
         request.data["chatroom_id"] = chatroom_pk
         request.data["user_or_bot"] = 1
         serializer = MessageSerializer(data=request.data)
-
+        
         if serializer.is_valid():
             serializer.save()
-        else:
-            Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        else: Response(serializer.errors, status=400)
+        
         request.data["user_or_bot"] = 0
         request.data["message_context"] = chatbot(request.data["message_context"])
         serializer = MessageSerializer(data=request.data)
-
+        
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        else:
-            Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else: Response(serializer.errors, status=400)
 
 
 # class User_Message_APIView(APIView):
-
+    
 
 # class Bot_Message_APIView(APIView):
 #     def post(self, request, chatroom_pk):
@@ -98,7 +83,7 @@ class Message_List_APIView(APIView):
 #         request.data["message_context"] = chatbot(request.data["message_context"])
 #         print(request.data)
 #         serializer = MessageSerializer(data=request.data)
-
+        
 #         if serializer.is_valid():
 #             serializer.save()
 #             return Response(serializer.data)
