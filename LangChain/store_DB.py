@@ -8,11 +8,11 @@ load_dotenv()
 
 ####### Data Load
 # loader = CSVLoader(file_path="./data/한국.csv", encoding='cp949')
-loader = CSVLoader(file_path="./data/result.csv", encoding='utf-8')
+loader = CSVLoader(file_path="./data/result_final_with_genres.csv", encoding='utf-8')
 whole_data = loader.load()
 
 #### Split
-splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=200)
+splitter = RecursiveCharacterTextSplitter(chunk_size=2000, chunk_overlap=400)
 split_data = splitter.split_documents(whole_data)
 
 #### Embedding
@@ -22,5 +22,5 @@ embeddings = OpenAIEmbeddings()
 vector_store = Chroma.from_documents(
     documents=split_data,
     embedding=embeddings,
-    persist_directory="book_DB",
+    persist_directory="../book_DB",
 )
