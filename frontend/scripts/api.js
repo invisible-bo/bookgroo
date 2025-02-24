@@ -8,6 +8,15 @@ const api = {                                  // backend로 post 요청 보내�
             body: JSON.stringify(data),
         }).then((response) => response.json());         //json 형태로 변환
     },
+
+    async get(url) {  
+        return fetch(`http://127.0.0.1:8000/api/v1/accounts/${url}`, {      
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then(response => response.json());
+    }
 };
 
-export default api;  //API객체 다른 파일에서 IMPORT로 사용 가능
+export default api;

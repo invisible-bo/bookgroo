@@ -1,0 +1,32 @@
+.signup-container {
+    display: flex;  /* 폼 컨테이너 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; 
+    height: auto;  /* 🔥 높이를 자동으로 설정 */
+    min-height: 700px; /* 📌 최소 높이를 넉넉하게 설정 */
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.95);
+    box-shadow: 0px 0px 10px rgba(0, 224, 255, 0.7); 
+    border-radius: 10px;
+}
+
+#genre-list {
+    display: flex; /* flex로 가로 배치 */
+    flex-wrap: wrap; /* 넘치면 줄바꿈 */
+    justify-content: center; /* 중앙 정렬 */
+}
+.genre-checkbox {
+    display: inline-block; /* 인라인 체크박스 */
+    width: auto;
+    height: auto;
+    visibility: visible; /* 혹시라도 숨겨져 있으면 보이게 */
+}
+
+input[type="checkbox"] {
+    visibility: visible; /* ✅ 체크박스 보이게 */
+    width: 15px; /* 크기 조절 가능 */
+    height: 15px;
+}
