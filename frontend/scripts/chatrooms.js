@@ -130,8 +130,7 @@ function displayMessages(messages) {
             messageElement.innerHTML = `<strong>🍀${nickname}:</strong> ${message.message_context}`;
         } else {
             messageElement.classList.add("bot-message");
-            messageElement.innerHTML = `<strong>📚Groo2:</strong> ${message.message_context}`;
-        }
+            messageElement.innerHTML = `<strong>📚<span style="color: dodgerblue;">Groo2</span>:</strong> ${message.message_context}`;        }
 
         chatBox.appendChild(messageElement);
     });
