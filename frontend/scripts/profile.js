@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("username").textContent = localStorage.getItem("username") || "알 수 없음";
     document.getElementById("email").textContent = localStorage.getItem("email") || "알 수 없음";
 
-    // ✅ 사용자가 선택한 장르 목록 가져오기
+    // 사용자가 선택한 장르 목록 가져오기
     const selectedGenres = JSON.parse(localStorage.getItem("preferredGenres")) || [];
     const genreContainer = document.getElementById("selected-genres");
 
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // ✅ 장르 데이터에서 name 값만 추출하여 UI에 추가
+    // 장르 데이터에서 name 값만 추출하여 UI에 추가
     genreContainer.innerHTML = selectedGenres
         .map(genre => `<span class="genre-tag">${genre.name}</span>`)
         .join(", ");
