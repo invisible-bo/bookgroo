@@ -10,8 +10,9 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.core.mail import EmailMessage
 from .models import User, Genre
-from .serializers import UserSerializers,GenreSerializer
+from .serializers import UserSerializers, GenreSerializer
 from .utils import EmailThread
+
 
 class GenreListView(APIView):
     permission_classes = [AllowAny]  # 인증 없이 누구나 접근 가능
@@ -38,12 +39,14 @@ class UserList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        preferred_genres_ids = request.data.pop("preferred_genres", [])
+        preferred_genres_ids = request.data.pop("preferred_genres_ids", [])
         serializer = UserSerializers(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
 
-            genres = Genre.objects.filter(id__in=preferred_genres_ids) #선택한 장르 저장
+            genres = Genre.objects.filter(
+                id__in=preferred_genres_ids
+            )  # 선택한 장르 저장
             user.preferred_genres.set(genres)
 
             user.is_active = False
@@ -52,10 +55,12 @@ class UserList(APIView):
 
             activation_link = f"http://127.0.0.1:8000/api/v1/accounts/emailauth/{user.activation_token}/"
             email_subject = "이메일 인증 요청"
-            email_body = f"아래 링크를 클릭하여 이메일 인증을 완료하세요:\n{activation_link}"
+            email_body = (
+                f"아래 링크를 클릭하여 이메일 인증을 완료하세요:\n{activation_link}"
+            )
 
-            print(f"user이메일 {user.email}") 
-            print(f"인증링크 {activation_link}") 
+            print(f"user이메일 {user.email}")
+            print(f"인증링크 {activation_link}")
 
             email = EmailMessage(
                 email_subject,
@@ -71,7 +76,8 @@ class UserList(APIView):
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-#이메일 인증-사용자가 이메일에서 링크 클릭하면 작동하는 코드드
+
+# 이메일 인증-사용자가 이메일에서 링크 클릭하면 작동하는 코드드
 class ActivateAccountView(APIView):
     def get(self, request, token):
         try:
@@ -140,11 +146,11 @@ class UserDetail(APIView):
         serializer = UserSerializers(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            #선택한 장르 업데이트
+            # 선택한 장르 업데이트
             if preferred_genres_ids is not None:
                 genres = Genre.objects.filter(id__in=preferred_genres_ids)
                 user.preferred_genres.set(genres)
-                
+
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -178,7 +184,7 @@ class UserLogin(APIView):
                 {"message": "비밀번호가 맞지 않습니다."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-        
+
         if not user.is_active:
             return Response(
                 {"message": "이메일 인증이 필요합니다! 이메일을 확인하세요."},
@@ -188,7 +194,7 @@ class UserLogin(APIView):
         token = TokenObtainPairSerializer.get_token(user)  # refresh 토큰 생성
         refresh_token = str(token)  # refresh 토큰 문자열화
         access_token = str(token.access_token)  # access 토큰 문자열화
-        
+
         response = Response(
             {
                 "user": UserSerializers(user).data,
@@ -204,7 +210,7 @@ class UserLogin(APIView):
         response.set_cookie("access_token", access_token, httponly=True)
         response.set_cookie("refresh_token", refresh_token, httponly=True)
 
-        return response 
+        return response
 
 
 # 로그아웃
