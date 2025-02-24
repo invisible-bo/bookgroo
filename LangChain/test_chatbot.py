@@ -3,6 +3,11 @@ from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from dotenv import load_dotenv
 
+from langchain_core.prompts import (
+    ChatPromptTemplate,
+    SystemMessagePromptTemplate,
+    HumanMessagePromptTemplate,
+)
 
 def chatbot(user_question):
     load_dotenv()
@@ -21,15 +26,13 @@ def chatbot(user_question):
 
     #### LLM
     llm = ChatOpenAI(model="gpt-4o-mini")
-
-
+    
     #### prompt (gpt-4o 23년 10월)
-    prompt = ChatPromptTemplate.from_template(
+    prompt_01 = ChatPromptTemplate.from_template(
             """
                 Question: {user_question}
                 Context: {context}
                 Answer:
-                
                 
                 - 상황 A : 기본
                     1. 당신은 책을 추천해주는 봇 입니다.
@@ -81,14 +84,22 @@ def chatbot(user_question):
             """
         )
 
-
+# 3. 책 제목 옆에 context에서 검색된 책에는 RAG 태그, 사용하지 않은 책에는 LLM 태그를 붙여주세요.
     #### RAG
     retrieved_docs = retriever.invoke(user_question)
     context = "\n".join([doc.page_content for doc in retrieved_docs])
     
     ### chain
-    chain = prompt | llm
+    chain = prompt_01 | llm
     res = chain.invoke({"context": context, "user_question": user_question})
+
+    # chain = prompt_01 | llm
+    # res = chain.invoke({"user_question": user_question})
+    
     return res.content
 
+user_question = "으어어어 재미없다"
+# user_question = "음.. 그럼 판타지 장르의 책을 추천해줘"
+bot_message = chatbot(user_question)
+print(bot_message)
 
