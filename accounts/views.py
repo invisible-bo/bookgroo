@@ -10,8 +10,16 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.core.mail import EmailMessage
 from .models import User, Genre
-from .serializers import UserSerializers
+from .serializers import UserSerializers,GenreSerializer
 from .utils import EmailThread
+
+class GenreListView(APIView):
+    permission_classes = [AllowAny]  # 인증 없이 누구나 접근 가능
+
+    def get(self, request):
+        genres = Genre.objects.all()
+        serializer = GenreSerializer(genres, many=True)
+        return Response(serializer.data)
 
 
 class UserList(APIView):
