@@ -4,75 +4,6 @@
     height: 100vh;
 }
 
-.chat-history {
-    width: 0;  /* 기본적으로 숨김 */
-    max-width: 220px; /* 최대 너비 */
-    height: 100vh;
-    background-color: #121212;
-    border-right: 2px solid; 
-    padding: 15px;
-    overflow-y: auto; /* 채팅방 개수가 많으면 스크롤 허용 */
-    flex-shrink: 0;
-    transition: width 0.3s ease-in-out;  /* 부드러운 애니메이션 */
-}
-
-.chat-history.open {
-    width: 220px; /* 열렸을 때 너비 */
-    z-index: 900;
-}
-
-/* 사이드바 버튼 */
-.toggle-btn {
-    position: absolute;
-    top: 70px;
-    left: 10px;
-    background-color: #0d0d0d;
-    color: black;
-    border: none;
-    padding: 8px 8px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: 0.3s;
-    z-index: 1100;
-}
-
-/* 사이드바 버튼 툴팁 */
-.toggle-btn::after {
-    content: "채팅 내역 열기"; 
-    position: absolute;
-    top: 50%;  /* 버튼의 중앙 기준 */
-    left: 100%; /* 버튼 오른쪽으로 이동 */
-    transform: translateY(-50%); /* Y축 기준 중앙 정렬 */
-    background-color: #1a1a1a;
-    color: rgb(254, 254, 254);
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 5px;
-    white-space: nowrap;
-    opacity: 0;  /* 기본적으로 숨김 */
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.toggle-btn:hover {
-    background-color: #00ff87;
-}
-
-/* 마우스를 올리면 툴팁 표시 */
-.toggle-btn:hover::after {
-    opacity: 1;   /* 0,1만 */
-    visibility: visible;
-}
-
-.chat-history.open + .toggle-btn::after {
-    content: "채팅 내역 닫기";  
-}
-
-.chat-history ul {
-    list-style: none;
-    padding: 0;
-}
 
 
 
@@ -83,26 +14,33 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+
     width: 90vw;  /* 화면 너비의 90% 차지 */
-    max-width: 800px;  /* 최대 너비 제한 */
-    height: 85vh;  /* 화면 높이의 85% 사용 */
-    max-height: 500px;
-    min-height: 65%; /* 최대 높이 제한 */
+    max-width: 700px;  /* 최대 너비 제한 */
+
+    min-height: 80vh;  /* 🚀 화면 크기가 작을 때 자동 조절 */
+    max-height: 100vh;
+    height: auto; 
+
     background-color: #1a1a1a;
     border: 2px solid cyan;
     border-radius: 10px;
+
     padding: 10px;  /* padding을 줄여 작은 화면에서도 내부 요소가 너무 압축되지 않게 함 */
-    margin: auto;
-    overflow: auto;  /* 내부 요소 넘칠 경우 방지 */
+    margin-top: 80px;  /* 🚀 헤더를 피하기 위한 상단 여백 */
+    margin-bottom: 60px; /* 내부 요소 넘칠 경우 방지 */
+
+    box-sizing: border-box;
+    z-index: 10; 
 }
 
 .chat-box {
     color: white;
     text-shadow: none !important;
     flex-grow: 1;
-    width: 80%; 
+    width: 95%; 
     padding: 10px;
-    max-height: 580px;
+    max-height: 700px;
     overflow-y: auto;
     box-sizing: border-box;
     margin-bottom: 0;
@@ -169,29 +107,6 @@
 
 }
 
-/* 딜리트 버튼 툴팁 */
-.delete_btn::after {
-    content: "채팅삭제"; 
-    position: absolute;
-    top: -20px;  
-    right: 10%; /* 버튼 오른쪽으로 이동 */
-    transform: translateY(-50%); /* Y축 기준 중앙 정렬 */
-    background-color: #1a1a1a !important;
-    color: rgb(254, 254, 254) !important;
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 5px;
-    white-space: nowrap;
-    opacity: 0;  /* 기본적으로 숨김 */
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.delete_btn:hover::after {
-    opacity: 1;   /* 0,1만 */
-    visibility: visible;
-}
-
 
 @media (max-width: 768px) {
     .chat-container {
@@ -211,7 +126,7 @@
     font-weight: 600;
     text-align: right;
     align-self: flex-end;
-    margin-top: 25px;
+    margin-top: 35px;
 }
 
 .bot-message {

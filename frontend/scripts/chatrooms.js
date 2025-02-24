@@ -101,17 +101,22 @@ function displayMessages(messages) {
     const chatBox = document.querySelector(".chat-box");
     chatBox.innerHTML = ""; // 기존 메시지 삭제 후 새로 추가
 
+    const nickname = localStorage.getItem("nickname") || "사용자";
+
     messages.forEach(message => {
         const messageElement = document.createElement("div");
         messageElement.classList.add("message");
 
+        
+
         // true false 1 0 변환
         if (Number(message.user_or_bot) === 1) {
             messageElement.classList.add("user-message");
-            messageElement.innerHTML = `${message.message_context}`;
+            
+            messageElement.innerHTML = `<strong>🍀${nickname}:</strong> ${message.message_context}`;
         } else {
             messageElement.classList.add("bot-message");
-            messageElement.innerHTML = `<strong>🍀Groo2:</strong> ${message.message_context}`;
+            messageElement.innerHTML = `<strong>📚Groo2:</strong> ${message.message_context}`;
         }
 
         chatBox.appendChild(messageElement);
