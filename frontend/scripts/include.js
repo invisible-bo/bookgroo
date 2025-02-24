@@ -28,11 +28,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 로그아웃 버튼 클릭 이벤트
         logoutBtn.addEventListener("click", function () {
-            localStorage.removeItem("access_token");     //localStorage저장 토큰 삭제
+            localStorage.removeItem("access_token");
             localStorage.removeItem("refresh_token");
             localStorage.removeItem("nickname");
+            localStorage.removeItem("email");  
+            localStorage.removeItem("username"); 
+            localStorage.removeItem("isLoggedIn");  
+
             alert("로그아웃 되었습니다");
-            window.location.href = "homelogin.html";  //로그아웃 후 홈으로 이동
+
+
+            window.location.href = "homelogin.html";
         });
     }
 });

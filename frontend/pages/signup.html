@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookgroo</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/signup.css">
 </head>
 <body>
-    <div class="container">
+    <div class="signup-container">
         <h2 class="text-white">회원가입</h2>
         <form id="signup-form">
             <div><input type="text" id="username" placeholder="아이디" class="input"></div>
@@ -17,11 +18,20 @@
             <div><input type="password" id="password" placeholder="비밀번호" class="input"></div>
             <div><input type="password" id="passwordConfirm" placeholder="비밀번호 확인" class="input"></div>
             <p id="password-error" style="color:red;"></p>
+
+            <!-- 선호 책 장르 선택 -->
+            <div id="genre-selection">
+                <h3 class="text-white">선호 책 장르 (최대 5개 선택 가능)</h3>
+                <div id="genre-list"></div>
+                <p id="genre-error" style="color:red;"></p>
+            </div>
+
             <button type="submit" class="btn">가입하기</button>
         </form>
         <p id="signup-error" style="color:red;"></p>
         <a href="homelogin.html">이미 계정이 있나요? 로그인</a>
     </div>
+
     <script src="../scripts/include.js"></script> <!-- 헤더, 푸터 로드 -->
     <script type="module" src="../scripts/signup.js"></script>
 </body>
