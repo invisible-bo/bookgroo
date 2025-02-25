@@ -105,7 +105,7 @@ class ActivateAccountView(APIView):
             response = Response(
                 {
                     "user": UserSerializers(user).data,
-                    "message": "이메일 인증이 완료되었습니다. 자동 로그인 되었습니다!",
+                    "message": "이메일 인증이 완료되었습니다. 로그인을 진행해주세요!",
                     "jwt_token": {
                         "access_token": access_token,
                         "refresh_token": refresh_token,
