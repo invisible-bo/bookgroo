@@ -182,8 +182,7 @@ def chatbot(user_question):
     
     return result_03
 
-# user_question = "재미 없다"
-user_question = "로멘스 추천해줘"
+user_question = "아 졸리다"
+# user_question = "로멘스 추천해줘"
 bot_message = chatbot(user_question)
 # print(bot_message)
-
