@@ -49,6 +49,10 @@ class UserList(APIView):
             )  # 선택한 장르 저장
             user.preferred_genres.set(genres)
 
+            user.is_active = False
+            user.activation_token = str(uuid.uuid4())  # 이메일 인증 토큰 생성
+            user.save()
+
             activation_link = f"http://127.0.0.1:8000/api/v1/accounts/emailauth/{user.activation_token}/"
             email_subject = "이메일 인증 요청"
             email_body = (
