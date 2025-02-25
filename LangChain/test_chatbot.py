@@ -188,4 +188,3 @@ if __name__ == "__main__" :
     # user_question = "나 it 관련 책 추천해줘"
     user_question = "로멘스 추천해줘"
     bot_message = chatbot(user_question)
-    
