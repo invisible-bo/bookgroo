@@ -127,8 +127,7 @@ function displayMessages(messages) {
         if (Number(message.user_or_bot) === 1) {
             messageElement.classList.add("user-message");
             
-            messageElement.innerHTML = `<strong>🍀${nickname}:</strong> ${message.message_context}`;
-        } else {
+            messageElement.innerHTML = `<strong><span style="color:dark green;">🍀${nickname}:</span></strong> <span style="color: white;">${message.message_context}</span>`;        } else {
             messageElement.classList.add("bot-message");
             messageElement.innerHTML = `<strong>📚<span style="color: dodgerblue;">Groo2</span>:</strong> ${message.message_context}`;        }
 
