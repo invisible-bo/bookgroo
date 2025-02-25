@@ -24,15 +24,15 @@
 |team member |**최보근**| [@invisible-bo](https://github.com/invisible-bo) |        |
 ---
 ## 기능 소개
-1. 회원가입, 로그인, 로그아웃, 회원탈퇴 기능 제공
+1. 회원가입, 로그인, 로그아웃 기능 제공
 2. 키워드를 포함한 책 질문 입력 시 적절한 책을 추천해주는 챗봇 구현
 
 ---
 ## Process Flow
-![process flow](static/ProcessFlow.png)
+![process flow](static/process_flow.png)
 ---
 ## ERD
-
+![ERD](static/ERD.png)
 ---
 ## Tech stacks
 **Backend**
@@ -52,4 +52,29 @@
 
 ---
 ## Project Directory Structure
-완성 후 작성
+```bash
+| | | |____BOOKGROO
+| | | | |____.git
+| | | | | |____hooks
+| | | | | |____info
+| | | | | |____logs
+| | | | | |____objects
+| | | | | |____refs
+| | | | |____accounts
+| | | | | |____migrations
+| | | | | |______pycache__
+| | | | |____bookgroo
+| | | | | |______pycache__
+| | | | |____chatrooms
+| | | | | |____migrations
+| | | | | |______pycache__
+| | | | |____frontend
+| | | | | |____assets
+| | | | | |____components
+| | | | | |____pages
+| | | | | |____scripts
+| | | | | |____styles
+| | | | |____LangChain
+| | | | | |______pycache__
+| | | | |____static
+```
