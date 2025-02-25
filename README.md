@@ -18,10 +18,10 @@
 
 |Role        |Name      |GitHub        |Responsibilities |
 |------------|----------|--------------|-----------------|
-|team leader👑|**이고운**| [@dlrhdns75177](https://github.com/dlrhdns75177)|        |
-|team member |**맹주형**| [@jhmang1128](https://github.com/jhmang1128)     |        |
-|team member |**정지웅**| [@JaceJung-dev](https://github.com/JaceJung-dev) |        |
-|team member |**최보근**| [@invisible-bo](https://github.com/invisible-bo) |        |
+|team leader👑|**이고운**| [@dlrhdns75177](https://github.com/dlrhdns75177)|backend (drf, langchain)        |
+|team member |**맹주형**| [@jhmang1128](https://github.com/jhmang1128)     |backend (langchain,drf)        |
+|team member |**정지웅**| [@JaceJung-dev](https://github.com/JaceJung-dev) |backend (drf, langchain)        |
+|team member |**최보근**| [@invisible-bo](https://github.com/invisible-bo) |frontend (html, css, js)        |
 ---
 ## 기능 소개
 1. 회원가입, 로그인, 로그아웃 기능 제공
