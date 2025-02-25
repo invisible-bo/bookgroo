@@ -3,6 +3,8 @@ from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from dotenv import load_dotenv
 
+import os
+
 
 def chatbot(user_question):
     load_dotenv()
@@ -11,8 +13,10 @@ def chatbot(user_question):
     embeddings = OpenAIEmbeddings()
 
     #### vector store
+    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    book_DB_dir = os.path.join(root_dir, "book_DB")
     book_DB = Chroma(
-        persist_directory="../book_DB",
+        persist_directory=book_DB_dir,
         embedding_function=embeddings,
     )
 
@@ -79,8 +83,6 @@ def chatbot(user_question):
                 3. 2권 추천해주세요.
                 
         """)
-
-    # 추천 A 타입에서 2권, 추천 B 타입에서 2권, 총 4권을 추천해주세요.
 
     prompt_B = ChatPromptTemplate.from_template(
         """
@@ -156,7 +158,6 @@ def chatbot(user_question):
             
         """)
 
-
     #### RAG
     retrieved_docs = retriever.invoke(user_question)
     context = "\n".join([doc.page_content for doc in retrieved_docs])
@@ -172,6 +173,6 @@ def chatbot(user_question):
     
     chain_C = prompt_C | llm
     res_C = chain_C.invoke({"result_RAG": result_RAG, "result_LLM": result_LLM})
+    result_03 = res_C.content
     
-    
-    return res_C.content
+    return result_03
