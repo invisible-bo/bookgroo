@@ -30,12 +30,12 @@
 }
 
 .chat-box {
-    color: white;
+    color: rgb(255, 255, 255);
     text-shadow: none !important;
     flex-grow: 1;
     width: 95%; 
     padding: 10px;
-    max-height: 700px;
+    max-height: 1200px;
     overflow-y: auto;
     box-sizing: border-box;
     margin-bottom: 0;
