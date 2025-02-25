@@ -39,12 +39,15 @@ class UserList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        preferred_genres_ids = request.data.pop("preferred_genres_ids", [])
         serializer = UserSerializers(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            user.is_active = False
-            user.activation_token = str(uuid.uuid4())  # 이메일 인증 토큰 생성
-            user.save()
+
+            genres = Genre.objects.filter(
+                id__in=preferred_genres_ids
+            )  # 선택한 장르 저장
+            user.preferred_genres.set(genres)
 
             activation_link = f"http://127.0.0.1:8000/api/v1/accounts/emailauth/{user.activation_token}/"
             email_subject = "이메일 인증 요청"
