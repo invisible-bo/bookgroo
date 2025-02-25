@@ -44,6 +44,9 @@
 **AI**
 ![OPENAI](https://img.shields.io/badge/OPENAI-%23412991.svg?style=for-the-badge&logo=OPENAI&logoColor=white)&nbsp;![langchain](https://img.shields.io/badge/langchain-%231C3C3C.svg?style=for-the-badge&logo=langchain&logoColor=white)&nbsp;![imagen3](https://img.shields.io/badge/imagen3-%231C3C3C.svg?style=for-the-badge&logo=imagen3&logoColor=white)
 
+**Web Crawling**
+![Beautifulsoup](https://img.shields.io/badge/beautifulsoup-%23412991.svg?style=for-the-badge&logo=beautifulsoup&logoColor=white)
+
 **Version Control Systems**
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)&nbsp;
 
