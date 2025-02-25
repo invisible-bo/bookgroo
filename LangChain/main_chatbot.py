@@ -20,7 +20,7 @@ def chatbot(user_question):
     retriever = book_DB.as_retriever()
 
     #### LLM
-    llm = ChatOpenAI(model="gpt-4o-mini")
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
     
     #### prompt (gpt-4o 23년 10월)
     prompt_A = ChatPromptTemplate.from_template(
@@ -79,6 +79,8 @@ def chatbot(user_question):
                 3. 2권 추천해주세요.
                 
         """)
+
+    # 추천 A 타입에서 2권, 추천 B 타입에서 2권, 총 4권을 추천해주세요.
 
     prompt_B = ChatPromptTemplate.from_template(
         """
@@ -150,7 +152,7 @@ def chatbot(user_question):
                 2개의 답변을 하나의 답변으로 만들어주세요.
             
             - 상황 B : 책 추천 결과 취합
-                책에 대한 추천 내용은 누락 없이 모두 취합해주세요.
+                책에 대한 내용은 누락 없이 모두 취합해주세요.
             
         """)
 
