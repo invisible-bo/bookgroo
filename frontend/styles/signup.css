@@ -1,19 +1,31 @@
 .signup-container {
-    display: flex;  /* 폼 컨테이너 중앙 정렬 */
+    position: relative;
+    display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-    gap: 8px;
+    justify-content: flex-start; /* 위에서부터 내용이 차오르도록 변경 */
+    align-items: center;
+
     width: 100%;
-    max-width: 600px; 
-    height: auto;  
-    max-height: 800px; 
-    padding: 10px;
+    max-width: 700px;
+    
+    min-height: 80vh; /* 최소 높이 설정 */
+    height: auto; /* 높이를 자동으로 조절 */
+    max-height: none; /* 최대 높이 제한 해제 */
+
+    padding: 20px;
+    overflow-y: auto; /* 내부 스크롤 */
+
+    margin-top: 80px;
+    margin-bottom: 60px;
+    box-sizing: border-box;
+    z-index: 10;
+
     background: rgba(20, 20, 20, 0.95);
-    box-shadow: 0px 0px 10px rgba(0, 224, 255, 0.7); 
     border-radius: 10px;
-    text-align: left;
+    box-shadow: 0px 0px 10px rgba(0, 224, 255, 0.7);
 }
+
+
 
 #genre-list {
     display: flex; /* flex로 가로 배치 */
@@ -21,6 +33,7 @@
     justify-content: left; /* 중앙 정렬 */
     color: #ffffff;
     text-shadow: none;
+    overflow-y: auto;
 }
 .genre-checkbox {
     display: inline-block; /* 인라인 체크박스 */

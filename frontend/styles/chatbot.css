@@ -4,7 +4,6 @@
     height: 100vh;
 }
 
-
 /* chat box */
 .chat-container {
     position: relative;
@@ -15,20 +14,19 @@
 
     width: 90vw;  
     max-width: 700px;  
-
     min-height: 80vh; 
     max-height: 100vh;
     height: auto; 
+    padding: 10px;
+
+    margin-top: 80px;  /* 헤더를 피하기 위한 상단 여백 */
+    margin-bottom: 60px; /* 내부 요소 넘칠 경우 방지 */
+    box-sizing: border-box;
+    z-index: 10; 
 
     background-color: #1a1a1a;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 224, 255, 0.7); 
-    padding: 10px;  /* padding을 줄여 작은 화면에서도 내부 요소가 너무 압축되지 않게 함 */
-    margin-top: 80px;  /* 헤더를 피하기 위한 상단 여백 */
-    margin-bottom: 60px; /* 내부 요소 넘칠 경우 방지 */
-
-    box-sizing: border-box;
-    z-index: 10; 
 }
 
 .chat-box {
@@ -178,4 +176,16 @@
 .new_chat_btn:hover::after {
     opacity: 1;   /* 0,1만 */
     visibility: visible;
+}
+
+.chat-box::-webkit-scrollbar {
+    width: 10px; /* 스크롤바 너비 */
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #09f; /* 스크롤바 색상 */
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background-color: #222; /* 스크롤 트랙 색상 */
 }

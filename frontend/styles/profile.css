@@ -1,15 +1,24 @@
 .profile-card {
-    background-color: rgba(20, 20, 20, 0.95); 
+    background-color: rgba(20, 20, 20, 0.95);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0px 0px 15px #00FFFF; 
+    box-shadow: 0px 0px 15px #00FFFF;
     text-align: center;
+    
     width: 420px;
+    max-width: 90%; /* 화면이 작을 때 줄어들도록 설정 */
+    min-height: 60vh; /* 최소 높이 지정 */
+    max-height: 75vh; /* 화면 기준 최대 높이 설정 */
+    
     margin: auto;
     display: flex;
-    flex-direction: column;  /* 세로 정렬 */
-    align-items: center;  /* 가운데 정렬 */
+    flex-direction: column;
+    align-items: center;
+    
+    overflow-y: auto; /* 내부 내용이 넘칠 경우만 스크롤 */
+    box-sizing: border-box;
 }
+
 
 .genre-container {
     display: flex;
@@ -50,4 +59,16 @@
     margin-bottom: 10px;  
     text-align: center; 
     text-shadow: none
+}
+
+.profile-card::-webkit-scrollbar {
+    width: 10px; /* 스크롤바 너비 */
+}
+
+.profile-card::-webkit-scrollbar-thumb {
+    background-color: #09f; /* 스크롤바 색상 */
+}
+
+.profile-card::-webkit-scrollbar-track {
+    background-color: #222; /* 스크롤 트랙 색상 */
 }
