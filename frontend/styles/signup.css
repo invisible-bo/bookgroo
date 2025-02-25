@@ -40,10 +40,24 @@
     width: auto;
     height: auto;
     visibility: visible; /* 혹시라도 숨겨져 있으면 보이게 */
+    margin-right: 3px;
 }
 
 input[type="checkbox"] {
     visibility: visible; /* 체크박스 보이게 */
     width: 15px; 
     height: 15px;
+}
+
+label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 5px; /* 체크박스들 사이 간격 */
+    cursor: pointer; /* 클릭 시 UX 개선 */
+}
+
+.small-text {
+    color: white;
+    font-size: 0.8em;
+    opacity: 0.7; 
 }
