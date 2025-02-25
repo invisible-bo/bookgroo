@@ -1,4 +1,4 @@
-<!--프로파일-->
+<!-- 프로파일 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +10,24 @@
 </head>
 <body>
     <div class="profile-card">
-            <h1 class="text-white">회원 정보</h1>
-            <p class="text-white"><strong>닉네임:</strong> <span id="nickname">로딩 중...</span></p>
-            <p class="text-white"><strong>회원 ID:</strong> <span id="username">로딩 중...</span></p>
-            <p class="text-white"><strong>이메일:</strong> <span id="email">로딩 중...</span></p>
+        <h1 class="text-white">회원 정보</h1>
 
-            <p class="profile-text">선호하는 장르:</p>
-            <div id="selected-genres" class="genre-container"></div> <
+        <!-- 닉네임 수정 가능 -->
+        <p class="text-white">
+            <strong>닉네임:</strong> 
+            <input type="text" id="nickname-input" value="" disabled>
+            <button id="edit-nickname-btn">수정</button>
+            <button id="save-nickname-btn" style="display: none;">저장</button>
+        </p>
 
+        <p class="text-white"><strong>회원 ID:</strong> <span id="username">로딩 중...</span></p>
+        <p class="text-white"><strong>이메일:</strong> <span id="email">로딩 중...</span></p>
+
+        <p class="profile-text">선호하는 장르:</p>
+        <div id="selected-genres" class="genre-container">로딩 중...</div>
     </div>
+
     <script src="../scripts/include.js"></script>  <!-- 헤더, 푸터 로드 -->
-    <script type="module" src="../scripts/profile.js"></script>
-  <!-- 프로필 정보 로드 -->
+    <script type="module" src="../scripts/profile.js"></script>  <!-- 프로필 정보 로드 -->
 </body>
 </html>
