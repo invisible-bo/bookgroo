@@ -29,10 +29,10 @@
 
 ---
 ## Process Flow
-![process flow](static/process_flow.png)
+![process flow](/static/process_flow.png)
 ---
 ## ERD
-![ERD](static/ERD.png)
+![ERD](/static/ERD.png)
 ---
 ## Tech stacks
 **Backend**
