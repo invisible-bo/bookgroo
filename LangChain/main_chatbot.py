@@ -35,10 +35,9 @@ def chatbot(user_question):
                 
             - 상황 A : 기본
                 1. 당신은 책을 추천해주는 봇 입니다.
-                2. 모든 질문에 책을 추천할 필요는 없습니다. 사용자가 추천을 요청한 경우 책 추천을 진행하세요.
-                3. 사용자가 책 추천을 요청하지 않은 경우, 책 추천을 유도하세요.
+                2. 모든 질문에 책을 추천할 필요는 없습니다. 사용자가 책 추천을 요청하지 않은 경우, 책 추천을 유도하세요.
+                3. 사용자가 추천을 요청한 경우 책 추천을 진행하세요.
                 4. 사용자의 질문은 제거 해주세요.
-                5. context 안에서 책을 검색해서 추천해주세요.
             
             
                 예시 1
@@ -91,11 +90,11 @@ def chatbot(user_question):
                 
             - 상황 A : 기본
                 1. 당신은 책을 추천해주는 봇 입니다.
-                2. 모든 질문에 책을 추천할 필요는 없습니다. 사용자가 추천을 요청한 경우 책 추천을 진행하세요.
-                3. 사용자가 책 추천을 요청하지 않은 경우, 책 추천을 유도하세요.
+                2. 모든 질문에 책을 추천할 필요는 없습니다. 사용자가 책 추천을 요청하지 않은 경우, 책 추천을 유도하세요.
+                3. 사용자가 추천을 요청한 경우 책 추천을 진행하세요.
                 4. 사용자의 질문은 제거 해주세요.
-            
-            
+                
+                
                 예시 1
                     질문 1: 아무책이나 추천해줘
                     답변 1: 상황 B 실행
@@ -130,8 +129,8 @@ def chatbot(user_question):
                     
                     질문 2: 추천해줘
                     답변 2: 상황 B 실행
-                    
-                    
+                
+                
             - 상황 B : 책 추천
                 1. 저자, 출판사, 출판일자 등 책에 대한 정보도 함께 제공해주세요.
                 2. 책 제목 옆에 LLM 태그를 붙여주세요.
@@ -148,13 +147,8 @@ def chatbot(user_question):
             1. 당신은 추천 결과들을 취합하는 텍스트 편집 봇 입니다.
             2. 중복된 내용이 있는 경우, 중복된 내용을 제거해주세요.
             3. 다른 부가적인 설명 없이 취합된 결과만을 제공해주세요.
-            
-            
-            - 상황 A : 일상 적인 대화
-                2개의 답변을 하나의 답변으로 만들어주세요.
-            
-            - 상황 B : 책 추천 결과 취합
-                책에 대한 내용은 누락 없이 모두 취합해주세요.
+            4. 2개의 답변을 하나의 답변으로 만들어주세요.
+            5. 책에 대한 내용은 누락 없이 모두 취합해주세요.
             
         """)
 
@@ -166,13 +160,30 @@ def chatbot(user_question):
     chain_A = prompt_A | llm
     res_A = chain_A.invoke({"context": context, "user_question": user_question})
     result_RAG = res_A.content
+    print("\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    print("prompt_A")
+    print(result_RAG)
     
     chain_B = prompt_B | llm
     res_B = chain_B.invoke({"user_question": user_question})
     result_LLM = res_B.content
+    print("\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    print("prompt_B")
+    print(result_LLM)
     
     chain_C = prompt_C | llm
     res_C = chain_C.invoke({"result_RAG": result_RAG, "result_LLM": result_LLM})
     result_03 = res_C.content
+    print("\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    print("prompt_C")
+    print(result_03)
+    
     
     return result_03
+
+
+if __name__ == "__main__" :
+    # user_question = "나 it 관련 책 추천해줘"
+    user_question = "로멘스 추천해줘"
+    bot_message = chatbot(user_question)
+    
