@@ -3,6 +3,9 @@ from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from dotenv import load_dotenv
 
+import os
+
+
 def chatbot(user_question):
     load_dotenv()
 
@@ -10,8 +13,10 @@ def chatbot(user_question):
     embeddings = OpenAIEmbeddings()
 
     #### vector store
+    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    book_DB_dir = os.path.join(root_dir, "book_DB")
     book_DB = Chroma(
-        persist_directory="../book_DB",
+        persist_directory=book_DB_dir,
         embedding_function=embeddings,
     )
 
@@ -78,8 +83,6 @@ def chatbot(user_question):
                 3. 2권 추천해주세요.
                 
         """)
-
-    # 추천 A 타입에서 2권, 추천 B 타입에서 2권, 총 4권을 추천해주세요.
 
     prompt_B = ChatPromptTemplate.from_template(
         """
@@ -155,26 +158,24 @@ def chatbot(user_question):
             
         """)
 
-# 2. result_RAG 2권, result_LLM의 2권, 총 4권에 대한 정보를 취합해주세요.
-
     #### RAG
     retrieved_docs = retriever.invoke(user_question)
     context = "\n".join([doc.page_content for doc in retrieved_docs])
     
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     ### chain
     chain_A = prompt_A | llm
     res_A = chain_A.invoke({"context": context, "user_question": user_question})
     result_RAG = res_A.content
     print(result_RAG)
     
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     chain_B = prompt_B | llm
     res_B = chain_B.invoke({"user_question": user_question})
     result_LLM = res_B.content
     print(result_LLM)
     
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     chain_C = prompt_C | llm
     res_C = chain_C.invoke({"result_RAG": result_RAG, "result_LLM": result_LLM})
     result_03 = res_C.content
@@ -182,7 +183,9 @@ def chatbot(user_question):
     
     return result_03
 
-user_question = "아 졸리다"
-# user_question = "로멘스 추천해줘"
-bot_message = chatbot(user_question)
-# print(bot_message)
+
+if __name__ == "__main__" :
+    # user_question = "나 it 관련 책 추천해줘"
+    user_question = "로멘스 추천해줘"
+    bot_message = chatbot(user_question)
+    

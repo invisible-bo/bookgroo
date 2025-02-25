@@ -61,7 +61,13 @@ class Message_List_APIView(APIView):
         else: Response(serializer.errors, status=400)
         
         request.data["user_or_bot"] = 0
+        # print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        # print("message_context :", request.data["message_context"])
+        
         request.data["message_context"] = chatbot(request.data["message_context"])
+        # print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        # print("message_context :", request.data["message_context"])
+        
         serializer = MessageSerializer(data=request.data)
         
         if serializer.is_valid():
