@@ -54,20 +54,50 @@
 ## Project Directory Structure
 ```bash
 | | | |____BOOKGROO
+| | | | |____.env
 | | | | |____.git
+| | | | | |____COMMIT_EDITMSG
+| | | | | |____config
+| | | | | |____description
+| | | | | |____HEAD
 | | | | | |____hooks
+| | | | | |____index
 | | | | | |____info
 | | | | | |____logs
 | | | | | |____objects
+| | | | | |____packed-refs
 | | | | | |____refs
+| | | | |____.gitignore
 | | | | |____accounts
+| | | | | |____admin.py
+| | | | | |____apps.py
 | | | | | |____migrations
+| | | | | |____models.py
+| | | | | |____serializers.py
+| | | | | |____tests.py
+| | | | | |____urls.py
+| | | | | |____utils.py
+| | | | | |____views.py
+| | | | | |______init__.py
 | | | | | |______pycache__
 | | | | |____bookgroo
+| | | | | |____asgi.py
+| | | | | |____settings.py
+| | | | | |____urls.py
+| | | | | |____wsgi.py
+| | | | | |______init__.py
 | | | | | |______pycache__
 | | | | |____chatrooms
+| | | | | |____admin.py
+| | | | | |____apps.py
 | | | | | |____migrations
+| | | | | |____models.py
+| | | | | |____serializers.py
+| | | | | |____urls.py
+| | | | | |____views.py
+| | | | | |______init__.py
 | | | | | |______pycache__
+| | | | |____db.sqlite3
 | | | | |____frontend
 | | | | | |____assets
 | | | | | |____components
@@ -75,6 +105,19 @@
 | | | | | |____scripts
 | | | | | |____styles
 | | | | |____LangChain
+| | | | | |____chatbot.py
+| | | | | |____main_chatbot.py
+| | | | | |____store_DB.py
+| | | | | |____test_chatbot.py
+| | | | | |____test_graph.ipynb
+| | | | | |____test_graph.ipynb
+| | | | | |______init__.py
 | | | | | |______pycache__
+| | | | |____manage.py
+| | | | |____README.md
+| | | | |____requirements.txt
 | | | | |____static
+| | | | | |____Bookgroo.jpg
+| | | | | |____ERD.png
+| | | | | |____process_flow.png
 ```
